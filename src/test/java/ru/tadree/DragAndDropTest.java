@@ -3,6 +3,7 @@ package ru.tadree;
 import static com.codeborne.selenide.Condition.text;
 
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ public class DragAndDropTest {
         open("/drag_and_drop");
         //переносим прямоугольник А на место В
         $("#column-a").dragAndDropTo($("#column-b"));
-        //проверяем, что прямоугольник B стал первым
-        $$("#columns div").first().shouldHave(text("B"));
+        //проверяем, что прямоугольники поменялись местами
+        $("#column-a").shouldHave(text("B"));
     }
 }
